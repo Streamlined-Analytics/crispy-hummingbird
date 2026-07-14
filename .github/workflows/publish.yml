@@ -40,6 +40,8 @@ jobs:
       url: https://pypi.org/p/crispy-hummingbird
     permissions:
       id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
+      contents: read   # required so actions/checkout can read a PRIVATE repo
+                       # (setting `permissions` drops the default contents: read)
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
