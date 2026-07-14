@@ -578,7 +578,7 @@ def test_label_class_and_field_class_bs5():
     form.helper.field_class = "col-lg-8"
     html = render_crispy_form(form)
 
-    assert '<div class="mb-3">' in html
+    assert '<div class="form-field">' in html
     assert '<div class="col-lg-8">' in html
     assert html.count("col-lg-8") == 7
     # TODO FIX THIS TEST
@@ -588,7 +588,7 @@ def test_label_class_and_field_class_bs5():
     form.helper.field_class = "col-sm-8 col-md-6"
     html = render_crispy_form(form)
 
-    assert '<div class="mb-3">' in html
+    assert '<div class="form-field">' in html
     assert '<div class="col-sm-8 col-md-6">' in html
     assert html.count("col-sm-8") == 7
     # TODO FIX THIS TEST
@@ -604,7 +604,7 @@ def test_label_class_and_field_class_bs5_offset_when_horizontal():
     form.helper.form_class = "form-horizontal"
     html = render_crispy_form(form)
 
-    assert '<div class="mb-3 row">' in html
+    assert '<div class="form-field row">' in html
     assert '<div class="offset-lg-2 col-lg-8">' in html
     assert html.count("col-lg-8") == 7
 
@@ -614,7 +614,7 @@ def test_label_class_and_field_class_bs5_offset_when_horizontal():
     form.helper.field_class = "col-sm-8 col-md-6 col-7 col-lg-8"
     html = render_crispy_form(form)
 
-    assert '<div class="mb-3 row">' in html
+    assert '<div class="form-field row">' in html
     assert (
         '<div class="offset-sm-3 offset-md-4 offset-lg-4 col-sm-8'
         ' col-md-6 col-7 col-lg-8">' in html
@@ -629,7 +629,7 @@ def test_form_group_with_form_inline_bs5():
     form = SampleForm()
     form.helper = FormHelper()
     html = render_crispy_form(form)
-    assert '<div class="mb-3">' in html
+    assert '<div class="form-field">' in html
 
     # .row class shouldn't be together with .form-group in inline forms
     form = SampleForm()
@@ -637,7 +637,7 @@ def test_form_group_with_form_inline_bs5():
     form.helper.form_class = "form-inline"
     form.helper.field_template = "hummingbird/layout/inline_field.html"
     html = render_crispy_form(form)
-    assert '<div class="mb-3 row">' not in html
+    assert '<div class="form-field row">' not in html
 
 
 def test_passthrough_context():

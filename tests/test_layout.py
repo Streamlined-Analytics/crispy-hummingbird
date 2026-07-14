@@ -207,7 +207,7 @@ def test_layout_fieldset_row_html_with_unicode_fieldnames():
     assert 'title="fieldset_title"' in html
     assert 'test-fieldset="123"' in html
     assert 'id="row_passwords"' in html
-    assert html.count("<label") == 6
+    assert html.count("<label") == 7
 
     assert 'class="row rows"' in html
     assert 'class="form-label' in html
@@ -282,7 +282,7 @@ def test_column_has_css_classes():
     html = template.render(c)
 
     assert html.count("formColumn") == 0
-    assert html.count("col-md") == 1
+    assert html.count('class="col ') == 1
 
 
 def test_bs5_column_css_classes():
@@ -306,7 +306,7 @@ def test_bs5_column_css_classes():
     c = Context({"form": form, "form_helper": form_helper})
     html = template.render(c)
 
-    assert html.count("col-md") == 2
+    assert html.count('class="col ') == 2
     assert html.count("col-sm") == 1
 
 
@@ -407,10 +407,10 @@ def test_formset_layout():
     assert html.count("Note for first form only") == 1
     assert html.count("row") == 3
 
-    # There should be one div with mb-3 per field blocks
+    # There should be one div with form-field per field blocks
     # There are 6 fields blocks in each (3) form of the formset:
     #   is_company, email, password1, password2, first_name, last_name
-    assert html.count("mb-3") == 18
+    assert html.count("form-field") == 18
 
 
 def test_modelformset_layout():

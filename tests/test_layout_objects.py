@@ -493,7 +493,7 @@ class TestBootstrapLayoutObjects:
         )
         html = render_crispy_form(form)
 
-        form_group_class = "mb-3"
+        form_group_class = "form-field"
 
         assert html.count('class="%s extra"' % form_group_class) == 1
         assert html.count('autocomplete="off"') == 1
@@ -645,7 +645,7 @@ class TestBootstrapLayoutObjects:
             ),
         )
 
-        assert 'class="mb-3  "' in render_crispy_form(test_form)
+        assert 'class="form-field  "' in render_crispy_form(test_form)
 
     def test_formactions_attrs(self):
         test_form = SampleForm()
@@ -675,5 +675,5 @@ class TestBootstrapLayoutObjects:
             ),
         )
 
-        expected_class = 'class="mb-3 row formactions-test-class "'
+        expected_class = 'class="form-field row formactions-test-class "'
         assert expected_class in render_crispy_form(test_form)
