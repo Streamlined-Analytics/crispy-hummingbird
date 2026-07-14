@@ -149,19 +149,19 @@ def test_html5_required():
     html = render_crispy_form(form)
 
 
-def test_media_is_included_by_default_with_bootstrap5():
+def test_media_is_included_by_default_with_hummingbird():
     form = SampleFormWithMedia()
     form.helper = FormHelper()
-    form.helper.template_pack = "bootstrap5"
+    form.helper.template_pack = "hummingbird"
     html = render_crispy_form(form)
     assert "test.css" in html
     assert "test.js" in html
 
 
-def test_media_removed_when_include_media_is_false_with_bootstrap5():
+def test_media_removed_when_include_media_is_false_with_hummingbird():
     form = SampleFormWithMedia()
     form.helper = FormHelper()
-    form.helper.template_pack = "bootstrap5"
+    form.helper.template_pack = "hummingbird"
     form.helper.include_media = False
     html = render_crispy_form(form)
     assert "test.css" not in html
@@ -635,7 +635,7 @@ def test_form_group_with_form_inline_bs5():
     form = SampleForm()
     form.helper = FormHelper()
     form.helper.form_class = "form-inline"
-    form.helper.field_template = "bootstrap5/layout/inline_field.html"
+    form.helper.field_template = "hummingbird/layout/inline_field.html"
     html = render_crispy_form(form)
     assert '<div class="mb-3 row">' not in html
 

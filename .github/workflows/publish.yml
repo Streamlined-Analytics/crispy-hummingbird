@@ -37,7 +37,7 @@ jobs:
     needs: [tests]
     environment:
       name: pypi
-      url: https://pypi.org/p/crispy-bootstrap5
+      url: https://pypi.org/p/crispy-hummingbird
     permissions:
       id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
     steps:

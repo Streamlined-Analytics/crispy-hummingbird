@@ -3,13 +3,13 @@ from crispy_forms.layout import Field
 
 
 class FloatingField(Field):
-    template = "bootstrap5/layout/floating_field.html"
+    template = "hummingbird/layout/floating_field.html"
 
 
 class BS5Accordion(Accordion):
     """
-    Bootstrap5 Accordion menu object. It wraps `AccordionGroup` objects in a
-    container. It also allows the usage of accordion-flush, introduced in bootstrap5::
+    Hummingbird Accordion menu object. It wraps `AccordionGroup` objects in a
+    container. It also allows the usage of accordion-flush, introduced in Hummingbird::
 
         BS5Accordion(
             AccordionGroup("group name", "form_field_1", "form_field_2"),
@@ -30,4 +30,4 @@ class BS5Accordion(Accordion):
 
 
 class Switch(Field):
-    template = "bootstrap5/layout/switch.html"
+    template = "hummingbird/layout/switch.html"

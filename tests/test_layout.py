@@ -542,14 +542,14 @@ def test_keepcontext_context_manager():
 
 
 @override_settings(CRISPY_CLASS_CONVERTERS=CONVERTERS)
-def test_bootstrap5_form_inline():
+def test_hummingbird_form_inline():
     form = SampleForm()
     form.helper = FormHelper()
     form.helper.form_class = "form-inline"
-    form.helper.field_template = "bootstrap5/layout/inline_field.html"
+    form.helper.field_template = "hummingbird/layout/inline_field.html"
     form.helper.layout = Layout("email", "password1", "last_name")
     form.helper.form_class = "row row-cols-lg-auto"
-    assert parse_form(form) == parse_expected("test_bootstrap5_form_inline.html")
+    assert parse_form(form) == parse_expected("test_hummingbird_form_inline.html")
 
 
 def test_select():
@@ -636,7 +636,7 @@ def test_tabular_formset_layout():
     SampleFormSet = formset_factory(SampleForm, extra=3)
     formset = SampleFormSet()
     formset.helper = FormHelper()
-    formset.helper.template = "bootstrap5/table_inline_formset.html"
+    formset.helper.template = "hummingbird/table_inline_formset.html"
     assert parse_form(formset) == parse_expected("test_tabular_formset_layout.html")
 
     SampleFormSet = formset_factory(SampleForm, extra=3)
@@ -646,7 +646,7 @@ def test_tabular_formset_layout():
     }
     formset = SampleFormSet(data)
     formset.helper = FormHelper()
-    formset.helper.template = "bootstrap5/table_inline_formset.html"
+    formset.helper.template = "hummingbird/table_inline_formset.html"
     assert parse_form(formset) == parse_expected("test_tabular_formset_layout_failing.html")
 
 

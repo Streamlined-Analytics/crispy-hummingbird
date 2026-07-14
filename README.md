@@ -1,100 +1,59 @@
-# crispy-bootstrap5
+# crispy-hummingbird
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/smithdc1/crispy-bootstrap5/blob/main/LICENSE)
+A [django-crispy-forms](https://github.com/django-crispy-forms/django-crispy-forms) template pack
+for [**Hummingbird UI**](https://hbui.dev) — the Tailwind CSS v4 component system (used by the
+Falcon-Tailwind theme).
 
-Bootstrap5 template pack for django-crispy-forms
+> **Status: work in progress (v0.1.0).** Core form rendering works; full layout-object coverage,
+> regenerated test fixtures, and docs are in progress.
+
+## Why
+
+Hummingbird reuses Bootstrap 5's form class names (`form-control`, `form-select`, `form-label`,
+`form-check`, `is-invalid`, `input-group`, …), so this pack is a small, faithful adaptation of
+[`crispy-bootstrap5`](https://github.com/django-crispy-forms/crispy-bootstrap5) — it emits the class
+names Hummingbird styles, with a handful of Hummingbird-specific divergences (field wrapper
+`form-field`, a `form-check-input-wrapper` around checkbox/radio inputs, and Hummingbird's
+non-responsive `col` grid).
 
 ## Installation
 
-Install this plugin using `pip`:
 ```bash
-$ pip install crispy-bootstrap5
+pip install crispy-hummingbird   # not yet published — install from source for now
 ```
+
+Add to your Django settings:
+
+```python
+INSTALLED_APPS = [
+    # ...
+    "crispy_forms",
+    "crispy_hummingbird",
+]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "hummingbird"
+CRISPY_TEMPLATE_PACK = "hummingbird"
+```
+
+You also need Hummingbird's CSS in your build (e.g. `@import "@hummingbirdui/hummingbird";` in your
+Tailwind entry). This pack only emits class names; Hummingbird provides the styling.
 
 ## Usage
 
-You will need to update your project's settings file to add ``crispy_forms``
-and ``crispy_bootstrap5`` to your projects ``INSTALLED_APPS``. Also set
-``bootstrap5`` as and allowed template pack and as the default template pack
-for your project
+Use django-crispy-forms exactly as normal — `{% crispy %}`, the `|crispy` filter, `FormHelper`, and
+`Layout` objects all work. To opt a single form into Hummingbird while another pack is the project
+default:
 
 ```python
-INSTALLED_APPS = (
-    ...
-    "crispy_forms",
-    "crispy_bootstrap5",
-    ...
-)
-
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-
-CRISPY_TEMPLATE_PACK = "bootstrap5"
+helper = FormHelper()
+helper.template_pack = "hummingbird"
 ```
 
-## What's new?
+## Credits
 
-Bootstrap 5 introduces [floating labels](https://getbootstrap.com/docs/5.0/forms/floating-labels/).
-This template pack include a layout object to use this input type
+Forked from [`crispy-bootstrap5`](https://github.com/django-crispy-forms/crispy-bootstrap5) by
+David Smith and the django-crispy-forms team (MIT). See `LICENSE`.
 
-```python
-from crispy_bootstrap5.bootstrap5 import FloatingField
+## License
 
-# then in your Layout
-... Layout(
-    FloatingField("first_name"),
-)
-```
-
-Accordions also have new features, such as [Accordion flush](https://getbootstrap.com/docs/5.0/components/accordion/#flush) and [Always open](https://getbootstrap.com/docs/5.0/components/accordion/#always-open).
-There is a new layout object to use them
-
-```python
-from crispy_bootstrap5.bootstrap5 import BS5Accordion
-
-# then in your Layout
-# if not informed, flush and always_open default to False
-... Layout(
-    BS5Accordion(
-        AccordionGroup("group name", "form_field_1", "form_field_2"),
-        AccordionGroup("another group name", "form_field"),
-        flush=True,
-        always_open=True
-    )
-)
-```
-
-Support is added for [Switches](https://getbootstrap.com/docs/5.2/forms/checks-radios/#switches). Switches are a custom 
-checkbox rendered as a toggle switch. The widget for these fields should be
-a [CheckboxInput](https://docs.djangoproject.com/en/4.2/ref/forms/widgets/#django.forms.CheckboxInput).
-
-```python
-from crispy_bootstrap5.bootstrap5 import Switch
-
-... Layout(Switch("is_company"))
-```
-
-
-## Development
-
-To contribute to this library, first checkout the code. Then create a new virtual environment:
-
-```bash
-cd crispy-bootstrap5
-python -m venv venv
-source venv/bin/activate
-```
-
-Or if you are using `pipenv`:
-```bash
-pipenv shell
-```
-
-Now install the dependencies and tests:
-```bash
-pip install -e '.[test]'
-```
-
-To run the tests:
-```bash
-pytest
-```
+MIT.

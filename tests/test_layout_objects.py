@@ -28,7 +28,7 @@ from django.test import override_settings
 from django.utils.translation import activate, deactivate
 from django.utils.translation import gettext as _
 
-from crispy_bootstrap5.bootstrap5 import BS5Accordion, FloatingField, Switch
+from crispy_hummingbird.hummingbird import BS5Accordion, FloatingField, Switch
 
 from .forms import (
     CheckboxesSampleForm,

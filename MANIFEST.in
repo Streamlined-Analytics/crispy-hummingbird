@@ -1,4 +1,4 @@
 include LICENSE
 include MANIFEST.in
 include README.md
-recursive-include crispy_bootstrap5/templates *
+recursive-include crispy_hummingbird/templates *

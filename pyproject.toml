@@ -3,8 +3,8 @@ build-backend = "setuptools.build_meta"
 requires = ["setuptools>=77.0.3"]
 
 [project]
-name="crispy-bootstrap5"
-description="Bootstrap5 template pack for django-crispy-forms"
+name="crispy-hummingbird"
+description="Hummingbird UI template pack for django-crispy-forms"
 readme = "README.md"
 license = "MIT"
 authors = [{name = "David Smith"}]
@@ -43,13 +43,13 @@ lint = [
   "flake8",
 ]
 [project.urls]
-"CI" = "https://github.com/django-crispy-forms/crispy-bootstrap5/actions"
-"Changelog" = "https://github.com/django-crispy-forms/crispy-bootstrap5/releases"
-"Homepage" = "https://github.com/django-crispy-forms/crispy-bootstrap5"
-"Issues" = "https://github.com/django-crispy-forms/crispy-bootstrap5/issues"
+"CI" = "https://github.com/BenA-SA/crispy-hummingbird/actions"
+"Changelog" = "https://github.com/BenA-SA/crispy-hummingbird/releases"
+"Homepage" = "https://github.com/BenA-SA/crispy-hummingbird"
+"Issues" = "https://github.com/BenA-SA/crispy-hummingbird/issues"
 
 [tool.setuptools.dynamic]
-version = {attr = "crispy_bootstrap5.__version__"}
+version = {attr = "crispy_hummingbird.__version__"}
 
 [tool.isort]
 profile = "black"
