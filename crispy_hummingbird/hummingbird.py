@@ -6,12 +6,12 @@ class FloatingField(Field):
     template = "hummingbird/layout/floating_field.html"
 
 
-class BS5Accordion(Accordion):
+class HBAccordion(Accordion):
     """
     Hummingbird Accordion menu object. It wraps `AccordionGroup` objects in a
-    container. It also allows the usage of accordion-flush, introduced in Hummingbird::
+    container. It also allows the usage of accordion-flush::
 
-        BS5Accordion(
+        HBAccordion(
             AccordionGroup("group name", "form_field_1", "form_field_2"),
             AccordionGroup("another group name", "form_field"),
             flush=True,
@@ -27,6 +27,10 @@ class BS5Accordion(Accordion):
         if self.always_open:
             for accordion_group in self.fields:
                 accordion_group.always_open = True
+
+
+# Backwards-compatible alias for anyone migrating from crispy-bootstrap5.
+BS5Accordion = HBAccordion
 
 
 class Switch(Field):

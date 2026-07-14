@@ -28,7 +28,7 @@ from django.test import override_settings
 from django.utils.translation import activate, deactivate
 from django.utils.translation import gettext as _
 
-from crispy_hummingbird.hummingbird import BS5Accordion, FloatingField, Switch
+from crispy_hummingbird.hummingbird import HBAccordion, FloatingField, Switch
 
 from .forms import (
     CheckboxesSampleForm,
@@ -335,7 +335,7 @@ class TestBootstrapLayoutObjects:
         form.helper = FormHelper()
         form.helper.form_tag = False
         form.helper.layout = Layout(
-            BS5Accordion(
+            HBAccordion(
                 AccordionGroup("one", "first_name"),
                 AccordionGroup("two", "password1", "password2"),
             )
@@ -346,7 +346,7 @@ class TestBootstrapLayoutObjects:
         test_form = SampleForm()
         test_form.helper = FormHelper()
         test_form.helper.layout = Layout(
-            BS5Accordion(
+            HBAccordion(
                 AccordionGroup("one", "first_name"),
                 # there is no ``active`` kwarg here.
             )
@@ -363,7 +363,7 @@ class TestBootstrapLayoutObjects:
         )
 
         test_form.helper.layout = Layout(
-            BS5Accordion(
+            HBAccordion(
                 AccordionGroup("one", "first_name", active=False),
             )  # now ``active`` manually set as False
         )
@@ -382,7 +382,7 @@ class TestBootstrapLayoutObjects:
         test_form.helper = FormHelper()
         test_form.helper.form_tag = False
         test_form.helper.layout = Layout(
-            BS5Accordion(
+            HBAccordion(
                 AccordionGroup("one", "first_name"),
                 AccordionGroup("two", "password1", "password2"),
                 flush=True,
@@ -397,7 +397,7 @@ class TestBootstrapLayoutObjects:
         test_form.helper = FormHelper()
         test_form.helper.form_tag = False
         test_form.helper.layout = Layout(
-            BS5Accordion(
+            HBAccordion(
                 AccordionGroup("one", "first_name"),
                 AccordionGroup("two", "password1", "password2"),
                 always_open=True,
