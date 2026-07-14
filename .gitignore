@@ -13,3 +13,5 @@ venv
 
 # Local Claude Code working notes (not part of the package)
 CLAUDE.md
+dist/
+build/
