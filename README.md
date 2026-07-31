@@ -1,11 +1,14 @@
 # crispy-hummingbird
 
+[![PyPI version](https://img.shields.io/pypi/v/crispy-hummingbird.svg)](https://pypi.org/project/crispy-hummingbird/)
+[![Tests](https://github.com/Streamlined-Analytics/crispy-hummingbird/actions/workflows/test.yml/badge.svg)](https://github.com/Streamlined-Analytics/crispy-hummingbird/actions/workflows/test.yml)
+
 A [django-crispy-forms](https://github.com/django-crispy-forms/django-crispy-forms) template pack
 for [**Hummingbird UI**](https://hbui.dev) — the Tailwind CSS v4 component system (used by the
 Falcon-Tailwind theme).
 
-> **Status: work in progress (v0.1.0).** Core form rendering works; full layout-object coverage,
-> regenerated test fixtures, and docs are in progress.
+* [GitHub](https://github.com/Streamlined-Analytics/crispy-hummingbird) | [PyPI](https://pypi.org/project/crispy-hummingbird/)
+* MIT License
 
 ## Why
 
@@ -19,7 +22,7 @@ non-responsive `col` grid).
 ## Installation
 
 ```bash
-pip install crispy-hummingbird   # not yet published — install from source for now
+pip install crispy-hummingbird
 ```
 
 Add to your Django settings:
@@ -47,6 +50,28 @@ default:
 ```python
 helper = FormHelper()
 helper.template_pack = "hummingbird"
+```
+
+## Supported versions
+
+* Python 3.10–3.14
+* Django 5.2 LTS and 6.0
+* django-crispy-forms >= 2.3
+
+Each combination is exercised in CI, along with an advisory run against
+django-crispy-forms git main.
+
+## Development
+
+```bash
+git clone git@github.com:Streamlined-Analytics/crispy-hummingbird.git
+cd crispy-hummingbird
+python -m venv .venv && . .venv/bin/activate
+pip install -e . --group test --group lint
+
+python -m pytest        # quick run
+tox run -f py313        # one Python across the Django matrix
+tox -e lint             # black + isort + flake8
 ```
 
 ## Credits
