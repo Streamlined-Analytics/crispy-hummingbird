@@ -1,0 +1,64 @@
+name: Bug Report
+description: Something isn't working as expected.
+title: "BUG: "
+labels: [bug]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: What happened? What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Minimal steps to trigger the bug — ideally the form/layout definition and the markup it renders.
+      placeholder: |
+        1. Define a form with `Layout(...)`
+        2. Render with `{% crispy form %}`
+        3. See wrong markup
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: "crispy-hummingbird version"
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: input
+    id: crispy-version
+    attributes:
+      label: django-crispy-forms version
+      placeholder: "2.4"
+    validations:
+      required: true
+  - type: input
+    id: django-version
+    attributes:
+      label: Django version
+      placeholder: "5.2"
+    validations:
+      required: true
+  - type: input
+    id: python-version
+    attributes:
+      label: Python version
+      placeholder: "3.13"
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Rendered HTML, tracebacks, screenshots, or anything else that helps.
+    validations:
+      required: false
