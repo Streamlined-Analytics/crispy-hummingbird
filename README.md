@@ -63,6 +63,10 @@ django-crispy-forms git main.
 
 ## Development
 
+Contributors: [ARCHITECTURE.md](ARCHITECTURE.md) maps how the pack works — the fork
+provenance, the four Hummingbird divergences, and the invariants every change must
+preserve. See also [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ```bash
 git clone git@github.com:Streamlined-Analytics/crispy-hummingbird.git
 cd crispy-hummingbird

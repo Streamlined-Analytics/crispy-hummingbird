@@ -40,7 +40,9 @@ If you are proposing a feature:
 
 ## Get Started!
 
-Ready to contribute? Here's how to set up crispy-hummingbird for local development.
+Ready to contribute? Start with [ARCHITECTURE.md](ARCHITECTURE.md) — the map of how
+the pack works, its fork provenance, and the invariants every change must preserve.
+Then here's how to set up crispy-hummingbird for local development.
 
 1. Fork the crispy-hummingbird repo on GitHub.
 2. Clone your fork locally:
