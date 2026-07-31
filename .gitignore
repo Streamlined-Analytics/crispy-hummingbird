@@ -15,3 +15,8 @@ venv
 CLAUDE.md
 dist/
 build/
+.tox/
+.mypy_cache/
+.ruff_cache/
+.coverage*
+uv-cache/

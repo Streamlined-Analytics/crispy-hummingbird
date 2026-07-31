@@ -66,12 +66,11 @@ django-crispy-forms git main.
 ```bash
 git clone git@github.com:Streamlined-Analytics/crispy-hummingbird.git
 cd crispy-hummingbird
-python -m venv .venv && . .venv/bin/activate
-pip install -e . --group test --group lint
+uv sync
 
-python -m pytest        # quick run
-tox run -f py313        # one Python across the Django matrix
-tox -e lint             # black + isort + flake8
+uv run pytest                        # quick run
+uvx --with tox-uv tox run -f py313   # one Python across the Django matrix
+just qa                              # format, lint, type check, test
 ```
 
 ## Credits

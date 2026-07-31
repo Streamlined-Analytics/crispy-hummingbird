@@ -1,3 +1,5 @@
+from typing import Any
+
 from crispy_forms.bootstrap import Accordion
 from crispy_forms.layout import Field
 
@@ -19,7 +21,7 @@ class HBAccordion(Accordion):
         )
     """
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
         self.flush = kwargs.pop("flush", False)
         self.always_open = kwargs.pop("always_open", False)

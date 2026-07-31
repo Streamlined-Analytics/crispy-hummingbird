@@ -1,6 +1,5 @@
 import re
 
-import django
 import pytest
 from crispy_forms.bootstrap import (
     AppendedText,
@@ -14,7 +13,7 @@ from crispy_forms.layout import Button, Hidden, Layout, Reset, Submit
 from crispy_forms.templatetags.crispy_forms_tags import CrispyFormNode
 from crispy_forms.utils import render_crispy_form
 from django import forms
-from django.forms.models import formset_factory
+from django.forms.formsets import formset_factory
 from django.middleware.csrf import _get_new_csrf_string
 from django.template import Context, Template
 from django.urls import reverse
@@ -83,7 +82,7 @@ def test_form_with_helper_without_layout(settings):
     assert "forms-that-rock" in html
     assert 'method="get"' in html
     assert 'id="this-form-rocks"' in html
-    assert 'action="%s"' % reverse("simpleAction") in html
+    assert 'action="{}"'.format(reverse("simpleAction")) in html
 
     if settings.CRISPY_TEMPLATE_PACK == "uni_form":
         assert 'class="uniForm' in html
@@ -288,7 +287,7 @@ def test_formset_with_helper_without_layout(settings):
     assert "formsets-that-rock" in html
     assert 'method="post"' in html
     assert 'id="thisFormsetRocks"' in html
-    assert 'action="%s"' % reverse("simpleAction") in html
+    assert 'action="{}"'.format(reverse("simpleAction")) in html
     if settings.CRISPY_TEMPLATE_PACK == "uni_form":
         assert 'class="uniForm' in html
 
@@ -453,7 +452,7 @@ def test_helper_custom_field_template_no_layout():
 
     html = render_crispy_form(form)
     for field in form.fields:
-        assert html.count('id="div_id_%s"' % field) == 1
+        assert html.count(f'id="div_id_{field}"') == 1
     assert html.count("<h1>Special custom field</h1>") == len(form.fields)
 
 
@@ -463,7 +462,7 @@ def test_helper_std_field_template_no_layout():
 
     html = render_crispy_form(form)
     for field in form.fields:
-        assert html.count('id="div_id_%s"' % field) == 1
+        assert html.count(f'id="div_id_{field}"') == 1
 
 
 def test_bootstrap_form_show_errors_bs5():
@@ -519,7 +518,7 @@ def test_error_text_inline():
     help_tag_name = "p"
 
     matches = re.findall(
-        r'<{} id="error_\d_\w*"'.format(help_tag_name),
+        rf'<{help_tag_name} id="error_\d_\w*"',
         html,
         re.MULTILINE,
     )
