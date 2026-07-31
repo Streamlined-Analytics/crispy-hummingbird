@@ -1,6 +1,12 @@
 # CHANGELOG FOR CRISPY-HUMMINGBIRD
 
-## 0.1.0 (unreleased)
+## Unreleased
+* Repository moved to the [Streamlined-Analytics](https://github.com/Streamlined-Analytics) organization; project URLs updated.
+* Declared floors now match the tested matrix: Python >= 3.10, Django >= 5.2 (Django 4.2 and
+  Python 3.9 were never in the test matrix and 4.2 reached end of life in April 2026).
+* Packaging metadata: added maintainer and `Development Status :: 4 - Beta` classifier.
+
+## 0.1.0 (2026-07-14)
 * Initial release. Forked from `crispy-bootstrap5` and retargeted to Hummingbird UI:
   * Renamed package `crispy_hummingbird`, template pack `hummingbird`.
   * Field wrapper uses Hummingbird's `form-field` (instead of Bootstrap's `mb-3`).

@@ -8,8 +8,10 @@ description="Hummingbird UI template pack for django-crispy-forms"
 readme = "README.md"
 license = "MIT"
 authors = [{name = "David Smith"}]
-requires-python = ">=3.9"
+maintainers = [{name = "Ben Atkinson", email = "ben@streamlinedanalytics.co.uk"}]
+requires-python = ">=3.10"
 classifiers=[
+  "Development Status :: 4 - Beta",
   "Environment :: Web Environment",
   "Framework :: Django",
   "Framework :: Django :: 5.2",
@@ -29,7 +31,7 @@ dynamic = [
   "version",
 ]
 dependencies = [
-  "django>=4.2",
+  "django>=5.2",
   "django-crispy-forms>=2.3",
 ]
 [dependency-groups]
@@ -43,10 +45,10 @@ lint = [
   "flake8",
 ]
 [project.urls]
-"CI" = "https://github.com/BenA-SA/crispy-hummingbird/actions"
-"Changelog" = "https://github.com/BenA-SA/crispy-hummingbird/releases"
-"Homepage" = "https://github.com/BenA-SA/crispy-hummingbird"
-"Issues" = "https://github.com/BenA-SA/crispy-hummingbird/issues"
+"CI" = "https://github.com/Streamlined-Analytics/crispy-hummingbird/actions"
+"Changelog" = "https://github.com/Streamlined-Analytics/crispy-hummingbird/releases"
+"Homepage" = "https://github.com/Streamlined-Analytics/crispy-hummingbird"
+"Issues" = "https://github.com/Streamlined-Analytics/crispy-hummingbird/issues"
 
 [tool.setuptools.dynamic]
 version = {attr = "crispy_hummingbird.__version__"}
