@@ -108,3 +108,13 @@ ini_options.testpaths = [ "tests" ]
 ini_options.pythonpath = [ "." ]
 ini_options.django_find_project = false
 ini_options.DJANGO_SETTINGS_MODULE = "tests.test_settings"
+
+[tool.coverage]
+run.branch = true
+run.parallel = true
+run.source = [ "crispy_hummingbird", "tests" ]
+# Map wheel-installed paths (tox) back to the source tree so combine works.
+paths.source = [ "crispy_hummingbird", "*/site-packages/crispy_hummingbird" ]
+report.fail_under = 97
+report.show_missing = true
+report.skip_covered = true
