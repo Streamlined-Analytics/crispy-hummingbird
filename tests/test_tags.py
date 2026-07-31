@@ -1,4 +1,3 @@
-import django
 import pytest
 from crispy_forms.exceptions import CrispyError
 from crispy_forms.templatetags.crispy_forms_field import crispy_addon

@@ -1,6 +1,5 @@
 import random
 
-import django
 import pytest
 from crispy_forms.bootstrap import (
     Accordion,
@@ -28,7 +27,7 @@ from django.test import override_settings
 from django.utils.translation import activate, deactivate
 from django.utils.translation import gettext as _
 
-from crispy_hummingbird.hummingbird import HBAccordion, FloatingField, Switch
+from crispy_hummingbird.hummingbird import FloatingField, HBAccordion, Switch
 
 from .forms import (
     CheckboxesSampleForm,
@@ -164,7 +163,7 @@ def test_i18n():
 
 def test_remove_labels():
     form = SampleForm()
-    # remove boolean field as label is still printed in boostrap
+    # remove boolean field as label is still printed in bootstrap
     del form.fields["is_company"]
 
     for fields in form:
@@ -222,7 +221,9 @@ class TestBootstrapLayoutObjects:
             AppendedText("password1", "#"),
             PrependedText("password2", "$"),
         )
-        assert parse_form(test_form) == parse_expected("test_prepended_appended_text.html")
+        assert parse_form(test_form) == parse_expected(
+            "test_prepended_appended_text.html"
+        )
 
     def test_inline_radios(self):
         form = CheckboxesSampleForm()
@@ -276,9 +277,7 @@ class TestBootstrapLayoutObjects:
         )
         html = render_crispy_form(test_form)
 
-        assert (
-            html.count('<div class="accordion %s" id="super-accordion"' % classes) == 1
-        )
+        assert html.count(f'<div class="accordion {classes}" id="super-accordion"') == 1
 
     def test_accordion_group_css_class_is_applied(self):
         classes = "one two three"
@@ -293,7 +292,7 @@ class TestBootstrapLayoutObjects:
         )
         html = render_crispy_form(test_form)
 
-        assert html.count('<div class="accordion-item %s"' % classes) == 1
+        assert html.count(f'<div class="accordion-item {classes}"') == 1
 
     def test_accordion_active_false_not_rendered(self):
         test_form = SampleForm()
@@ -311,7 +310,7 @@ class TestBootstrapLayoutObjects:
         accordion_class = "collapse show"
 
         assert (
-            html.count('<div id="one" class="accordion-collapse %s"' % accordion_class)
+            html.count(f'<div id="one" class="accordion-collapse {accordion_class}"')
             == 1
         )
 
@@ -324,7 +323,7 @@ class TestBootstrapLayoutObjects:
         # This time, it shouldn't be there at all.
         html = render_crispy_form(test_form)
         assert (
-            html.count('<div id="one" class="accordion-collapse %s"' % accordion_class)
+            html.count(f'<div id="one" class="accordion-collapse {accordion_class}"')
             == 0
         )
 
@@ -358,7 +357,7 @@ class TestBootstrapLayoutObjects:
         accordion_class = "collapse show"
 
         assert (
-            html.count('<div id="one" class="accordion-collapse %s"' % accordion_class)
+            html.count(f'<div id="one" class="accordion-collapse {accordion_class}"')
             == 1
         )
 
@@ -371,7 +370,7 @@ class TestBootstrapLayoutObjects:
         # This time, it shouldn't be there at all.
         html = render_crispy_form(test_form)
         assert (
-            html.count('<div id="one" class="accordion-collapse %s"' % accordion_class)
+            html.count(f'<div id="one" class="accordion-collapse {accordion_class}"')
             == 0
         )
 
@@ -466,9 +465,9 @@ class TestBootstrapLayoutObjects:
         # else:
         # tab_class = 'tab-pane'
         # tab 1 should not be active
-        assert html.count('<div id="one" \n    class="{} active'.format(tab_class)) == 0
+        assert html.count(f'<div id="one" \n    class="{tab_class} active') == 0
         # tab 2 should be active
-        assert html.count('<div id="two" \n    class="{} active'.format(tab_class)) == 1
+        assert html.count(f'<div id="two" \n    class="{tab_class} active') == 1
 
     def test_radio_attrs(self):
         form = CheckboxesSampleForm()
@@ -495,7 +494,7 @@ class TestBootstrapLayoutObjects:
 
         form_group_class = "form-field"
 
-        assert html.count('class="%s extra"' % form_group_class) == 1
+        assert html.count(f'class="{form_group_class} extra"') == 1
         assert html.count('autocomplete="off"') == 1
         assert html.count('class="span4') == 1
         assert html.count('id="go-button"') == 1
@@ -599,7 +598,9 @@ class TestBootstrapLayoutObjects:
         form = GroupedChoiceForm({})
         form.helper = FormHelper()
         form.helper.layout = Layout("checkbox_select_multiple")
-        assert parse_form(form) == parse_expected("test_grouped_checkboxes_failing.html")
+        assert parse_form(form) == parse_expected(
+            "test_grouped_checkboxes_failing.html"
+        )
 
         form.helper.layout = Layout("radio")
         assert parse_form(form) == parse_expected("test_grouped_radios_failing.html")

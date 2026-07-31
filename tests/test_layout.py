@@ -1,4 +1,3 @@
-import django
 import pytest
 from crispy_forms.bootstrap import (
     AppendedText,
@@ -13,7 +12,8 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import HTML, Column, Fieldset, Layout, Row
 from crispy_forms.utils import render_crispy_form
 from django import forms
-from django.forms.models import formset_factory, modelformset_factory
+from django.forms.formsets import formset_factory
+from django.forms.models import modelformset_factory
 from django.middleware.csrf import _get_new_csrf_string
 from django.shortcuts import render
 from django.template import Context, Template
@@ -398,7 +398,7 @@ def test_formset_layout():
     assert "formsets-that-rock" in html
     assert 'method="post"' in html
     assert 'id="thisFormsetRocks"' in html
-    assert 'action="%s"' % reverse("simpleAction") in html
+    assert 'action="{}"'.format(reverse("simpleAction")) in html
 
     # Check form layout
     assert "Item 1" in html
@@ -647,7 +647,9 @@ def test_tabular_formset_layout():
     formset = SampleFormSet(data)
     formset.helper = FormHelper()
     formset.helper.template = "hummingbird/table_inline_formset.html"
-    assert parse_form(formset) == parse_expected("test_tabular_formset_layout_failing.html")
+    assert parse_form(formset) == parse_expected(
+        "test_tabular_formset_layout_failing.html"
+    )
 
 
 def test_flat_attrs_safe():
