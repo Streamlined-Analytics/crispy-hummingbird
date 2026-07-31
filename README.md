@@ -1,7 +1,7 @@
 # crispy-hummingbird
 
 [![PyPI version](https://img.shields.io/pypi/v/crispy-hummingbird.svg)](https://pypi.org/project/crispy-hummingbird/)
-[![Tests](https://github.com/Streamlined-Analytics/crispy-hummingbird/actions/workflows/test.yml/badge.svg)](https://github.com/Streamlined-Analytics/crispy-hummingbird/actions/workflows/test.yml)
+[![CI](https://github.com/Streamlined-Analytics/crispy-hummingbird/actions/workflows/ci.yml/badge.svg)](https://github.com/Streamlined-Analytics/crispy-hummingbird/actions/workflows/ci.yml)
 
 A [django-crispy-forms](https://github.com/django-crispy-forms/django-crispy-forms) template pack
 for [**Hummingbird UI**](https://hbui.dev) — the Tailwind CSS v4 component system (used by the
