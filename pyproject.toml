@@ -23,6 +23,7 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
   "Programming Language :: Python :: 3.14",
+  "Programming Language :: Python :: 3.15",
   "Topic :: Internet :: WWW/HTTP",
   "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
   "Topic :: Software Development :: Libraries :: Python Modules",
@@ -110,11 +111,11 @@ ini_options.django_find_project = false
 ini_options.DJANGO_SETTINGS_MODULE = "tests.test_settings"
 
 [tool.coverage]
+run.source = [ "crispy_hummingbird", "tests" ]
 run.branch = true
 run.parallel = true
-run.source = [ "crispy_hummingbird", "tests" ]
 # Map wheel-installed paths (tox) back to the source tree so combine works.
 paths.source = [ "crispy_hummingbird", "*/site-packages/crispy_hummingbird" ]
 report.fail_under = 97
-report.show_missing = true
 report.skip_covered = true
+report.show_missing = true
